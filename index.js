@@ -110,7 +110,7 @@ function convertCategory(category) {
 }
 
 function postSlack(text){
-  var url = "https://hooks.slack.com/services/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";
+  var url = "https://hooks.slack.com/services/~~~";
   var options = {
     "method" : "POST",
     "headers": {"Content-type": "application/json"},
