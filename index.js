@@ -18,9 +18,9 @@ function doPost(e) {
 
 function start() {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-  if (sheet.getLastRow() !== 0) {
+  if ((sheet.getName().match(/^[\d]{4}\/[\d]{2}\/[\d]{2} [\d]{2}:[\d]{2}$/) !== null) || (sheet.getLastRow() !== 0)) {
     postSlack('すでに始まっています。');
-    return;
+    return;    
   }
   var date = new Date();
   sheet.setName(Utilities.formatDate( date, 'Asia/Tokyo', 'yyyy/MM/dd hh:mm'));
@@ -35,7 +35,7 @@ function end() {
   var ploblemArray = [];
   var tryArray = [];
   if (lastRowNum === 0) {
-    postSlack('登録された`KPT`がありません');
+    postSlack('登録された `KPT`がありません');
     return;
   }
   var rows = sheet.getRange(1, 1, lastRowNum, 3).getValues();
@@ -110,7 +110,7 @@ function convertCategory(category) {
 }
 
 function postSlack(text){
-  var url = "https://hooks.slack.com/services/~~~";
+  var url = "https://hooks.slack.com/services/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";
   var options = {
     "method" : "POST",
     "headers": {"Content-type": "application/json"},
