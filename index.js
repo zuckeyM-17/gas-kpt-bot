@@ -96,7 +96,7 @@ function processMessage(text) {
   }
   return {
     category: convertCategory(match[1]),
-    content: match[2],
+    content: match[2].replace(/^\s*|\s*$/g, ""),
   };
 }
 
