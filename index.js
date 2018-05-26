@@ -19,12 +19,12 @@ function doPost(e) {
 function start() {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
   if ((sheet.getName().match(/^[\d]{4}\/[\d]{2}\/[\d]{2} [\d]{2}:[\d]{2}$/) !== null) || (sheet.getLastRow() !== 0)) {
-    postSlack('すでに始まっています。');
+    postSlack('既に始まっています:eyes:');
     return;    
   }
   var date = new Date();
   sheet.setName(Utilities.formatDate( date, 'Asia/Tokyo', 'yyyy/MM/dd hh:mm'));
-  postSlack('`KPT`をスタートします！！');
+  postSlack('`KPT`スタート！！');
 }
 
 function end() {
@@ -69,24 +69,28 @@ function end() {
 }
 
 function registerKpt(text, userName) {
-  postSlack('registering....');
+  postSlack('登録します...');
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
   var categoryCell = sheet.getRange(sheet.getLastRow() + 1, 1);
   var contentCell = sheet.getRange(sheet.getLastRow() + 1, 2);
   var userCell = sheet.getRange(sheet.getLastRow() + 1, 3);
   var message = processMessage(text);
+  if (message === '') {
+    postSlack('本文を入れてください。');
+    return;
+  }
   if (message === null) {
-    postSlack('形式が違います。 `K:`、 `P:`、 `T:`から始めてください。');
+    postSlack('`K:`、 `P:`、 `T:`から始めて書いてください。:male-police-officer:');
     return;
   }
   categoryCell.setValue(message.category);
   contentCell.setValue(message.content);
   userCell.setValue(userName);
-  postSlack('受け付けました！');
+  postSlack('登録しました:smile:');
 }
 
 function processMessage(text) {
-  var match = text.match(/^([K|P|T]):(.*)$/);
+  var match = text.match(/^([K|P|T|k|p|t]):(.*)$/);
   if (match === null) {
     return null;
   }
