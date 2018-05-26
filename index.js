@@ -103,10 +103,13 @@ function processMessage(text) {
 function convertCategory(category) {
   switch(category) {
     case 'K':
+    case 'k':
       return KEEP;
     case 'P':
+    case 'p':
       return PLOBLEM;
     case 'T':
+    case 't':
       return TRY;
     default:
       return null;
