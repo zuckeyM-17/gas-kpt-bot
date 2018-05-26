@@ -84,7 +84,7 @@ function registerKpt(text, userName) {
     return;
   }
   categoryCell.setValue(message.category);
-  contentCell.setValue(message.content);
+  contentCell.setValue(' ' + message.content);
   userCell.setValue(userName);
   postSlack('登録しました:smile:');
 }
