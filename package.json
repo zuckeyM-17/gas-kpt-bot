@@ -1,0 +1,22 @@
+{
+  "name": "gas-kpt-bot",
+  "version": "1.0.0",
+  "description": "https://zuckey17.hatenablog.com/entry/2018/05/06/183500 https://zuckey17.hatenablog.com/entry/2018/04/29/235946",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "clasp push && clasp deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zuckeyM-17/gas-kpt-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zuckeyM-17/gas-kpt-bot/issues"
+  },
+  "homepage": "https://github.com/zuckeyM-17/gas-kpt-bot#readme",
+  "dependencies": {
+    "@google/clasp": "^1.3.2"
+  }
+}
