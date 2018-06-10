@@ -1,3 +1,5 @@
+var SLACK_INCOMING_WEBHOOK_URL = "https://hooks.slack.com/services/~~~";
+
 var KEEP = 'KEEP';
 var PLOBLEM = 'PLOBLEM';
 var TRY = 'TRY';
@@ -117,11 +119,10 @@ function convertCategory(category) {
 }
 
 function postSlack(text){
-  var url = "https://hooks.slack.com/services/~~~";
   var options = {
     "method" : "POST",
     "headers": {"Content-type": "application/json"},
     "payload" : '{"text":"' + text + '"}'
   };
-  UrlFetchApp.fetch(url, options);
+  UrlFetchApp.fetch(SLACK_INCOMING_WEBHOOK_URL, options);
 }
